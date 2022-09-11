@@ -14,7 +14,7 @@ var retData = ""
 
  
 
-consto port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 var client = new AddSearchClient(process.env.keyA, process.env.keyB);
 
