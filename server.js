@@ -86,6 +86,7 @@ router.get("/info", (request, response) => {
       response.write('"url":' + '"' + obj.url + '",')
       response.write('"id":' + '"' + obj.id + '",')
       response.write('"title":' + '"' + obj.title + '",')
+      response.write('"password":true,')
       response.write('"allinfo":' + JSON.stringify(obj))
       index == max ? response.write("}") : response.write("},")
     })
@@ -102,7 +103,7 @@ app.get('/', function (req, res) {
 
 app.listen(port);
 
-console.log('Server started on port: ' + port);
+console.log('Server started at on port: ' + port);
 
 
 // search testing
