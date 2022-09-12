@@ -104,8 +104,11 @@
     renderResults = (main) => {
         let build = ""
         if (main[0].hasOwnProperty("password")) {
-            highlight($("#password"),true)
-            return false
+            if (!main[0].password)
+            {
+                highlight($("#password"),true)
+                return false
+            }
         }
         main.forEach(function (item) {
             console.log(item.allinfo)
@@ -130,7 +133,7 @@
         $("#search").attr("disabled", false)
     }
     $("#more").click(function(){
-        $(".alert-secondary").length == 0 ? $(".alert-secondary").show() : $(".alert-secondary").hide()
+        $(".alert-secondary:first").is(":visible") ? $(".alert-secondary").hide() : $(".alert-secondary").show()
     })
     $("#search").click(function () {
         highlightFail = false
@@ -164,7 +167,9 @@
                 renderResults(main)
             })
         } else {
+            console.log($("#password").val())
             $.get("/info", { main: input, filename: lob, count: $("#count").val(), pass: $("#password").val() }, function (res) {
+                
                 main = JSON.parse("[" + res + "]")
                 console.log(main)
                 renderResults(main)
