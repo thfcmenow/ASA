@@ -1,0 +1,75 @@
+<%- include('./partials/header'); %>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2>AddSearch Admin Tools [2022-09-14]</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <input class="form-control" id="searchterm" placeholder="Search Term">
+            </div>
+            <div class="col-sm-3">
+                <select id="lob" class="form-select" aria-label="Default select example">
+                    <option value="" selected>Select LOB:</option>
+                </select>
+            </div>
+            <div class="col-sm-1">
+                <select id="count" class="form-select" aria-label="Default select example">
+                    <option value="5">5</option>
+                    <option value="20">20</option>
+                    <option value="40">40</option>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <input class="form-control" id="password" placeholder="Password">
+            </div>
+            <div class="col-sm-1">
+                <button class="btn btn-secondary" id="search">Search</button>
+            </div>
+            <div class="col-sm-1">
+                <button style="display:none" class="btn btn-secondary" id="more">More</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <table class="table" style="display:none">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>ID</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="results">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<!-- local script -->
+<script>
+    var main = ""
+    highlightFail = false
+
+    // setup dropdowns
+    var config = <%-JSON.stringify(data)%>
+    for(var key in config) {
+       $("#lob").append("<option value='" + config[key].options + "'>" + key + "</option>")
+    }
+</script>
+
+<!-- client script (admin) -->
+<script src="../js/client.js"></script>
+
+
+<footer>
+    <%- include('./partials/footer'); %>
+</footer>
+
+</html>
