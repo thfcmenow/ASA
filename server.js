@@ -5,7 +5,11 @@ const router = express.Router()
 const app = express()
 const path = require('path');
 const port = process.env.PORT || 3000;
-var proceed = false
+
+const config = require("./json/config.json");
+
+//setting view engine to ejs
+app.set("view engine", "ejs");
 
 var retData = ""
 var client = new AddSearchClient(process.env.keyA, process.env.keyB);
@@ -97,8 +101,21 @@ router.get("/info", (request, response) => {
 app.use("/", router)
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, '/index.html'));
+   res.render("index", {
+    data: config
+  });
+
+  
+  // res.sendFile(path.join(__dirname, '/script/client.js'))
 });
+
+app.get('/css/client.css', function (req, res) {
+  res.sendFile(path.join(__dirname, '/css/client.css'))
+})
+
+app.get('/js/client.js', function (req, res) {
+  res.sendFile(path.join(__dirname, '/js/client.js'))
+})
 
 
 app.listen(port);

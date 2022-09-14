@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/thfcmenow/ASA#readme",
   "dependencies": {
-    "express": "^4.17.1",
-    "addsearch-js-client": "^0.7.0"
+    "addsearch-js-client": "^0.7.0",
+    "dotenv": "^16.0.2",
+    "ejs": "^3.1.8",
+    "express": "^4.17.1"
   }
 }
